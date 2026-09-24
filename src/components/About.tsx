@@ -1,5 +1,5 @@
 import React from 'react';
-import { User, Cpu, Shield, Award, Wrench, Sparkles, Code } from 'lucide-react';
+import { User, Shield, Award, Code } from 'lucide-react';
 
 const About: React.FC = () => {
   return (

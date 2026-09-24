@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingBag, ArrowRight, ShieldCheck, Sparkles, Package, Send } from 'lucide-react';
+import { ShoppingBag, ArrowRight, ShieldCheck, Package, Send } from 'lucide-react';
 
 interface HomeProps {
   onNavigateToCatalog: () => void;

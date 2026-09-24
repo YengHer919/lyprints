@@ -66,7 +66,7 @@ const Contact: React.FC<ContactProps> = ({ initialSubject = '' }) => {
                 <input
                   type="text"
                   className="form-input"
-                  placeholder="e.g. John Doe"
+                  placeholder="e.g. John Pork"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
@@ -78,7 +78,7 @@ const Contact: React.FC<ContactProps> = ({ initialSubject = '' }) => {
                 <input
                   type="email"
                   className="form-input"
-                  placeholder="e.g. john@example.com"
+                  placeholder="e.g. pork@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
