@@ -4,7 +4,7 @@ import Home from './components/Home';
 import Catalog from './components/Catalog';
 import About from './components/About';
 import Contact from './components/Contact';
-import logo from './components/Images/LogoT.png';
+import logo from './components/Images/Logo2.png';
 
 function App() {
   const [activeTab, setActiveTab] = useState<'home' | 'catalog' | 'about' | 'contact'>('home');

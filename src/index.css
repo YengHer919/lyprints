@@ -656,3 +656,21 @@ footer a:hover {
   opacity: 0.8;
   text-decoration: underline !important;
 }
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(128, 128, 128, 0.5);
+  color: white;
+}
+
+.gallery-arrow.left { left: 8px; }
+.gallery-arrow.right { right: 8px; }

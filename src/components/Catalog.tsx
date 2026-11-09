@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { initialProducts, catalogCategories, type Product } from '../data/products';
-import { Search, ShoppingCart, X, CheckCircle } from 'lucide-react';
+import { Search, ShoppingCart, X, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface CatalogProps {
   onInquireItem: (productName: string) => void;
@@ -11,6 +11,7 @@ const Catalog: React.FC<CatalogProps> = ({ onInquireItem }) => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [sortBy, setSortBy] = useState<'default' | 'alphabetical-asc' | 'alphabetical-desc' | 'recent-desc' | 'recent-asc'>('default');
   const [activeModalProduct, setActiveModalProduct] = useState<Product | null>(null);
+  const [imageIndex, setImageIndex] = useState(0);
 
   // Handle clicking category pill buttons (including Alphabetical & Recent shortcut pills)
   const handleCategoryClick = (cat: string) => {
@@ -55,7 +56,7 @@ const Catalog: React.FC<CatalogProps> = ({ onInquireItem }) => {
       <div className="section-header">
         <h2 className="section-title">Product Gallery</h2>
         <p className="section-desc">
-          Browse our gallery of handcrafted items and 3D printed products. Select any item to view details or place an inquiry order.
+          Browse our gallery of 3D printed products. Please note that you can request custom colors on all models; inquire for more details. Select any item to view details or place an inquiry order.
         </p>
       </div>
 
@@ -134,7 +135,10 @@ const Catalog: React.FC<CatalogProps> = ({ onInquireItem }) => {
                   <div className="product-price">${product.price.toFixed(2)}</div>
                   <button
                     className="btn-view-item"
-                    onClick={() => setActiveModalProduct(product)}
+                    onClick={() => {
+                      setActiveModalProduct(product);
+                      setImageIndex(0);
+                    }}
                   >
                     View Details
                   </button>
@@ -159,13 +163,44 @@ const Catalog: React.FC<CatalogProps> = ({ onInquireItem }) => {
               <X size={20} />
             </button>
 
-            <div style={{ borderRadius: '12px', overflow: 'hidden', height: '240px', marginBottom: '20px' }}>
-              <img
-                src={activeModalProduct.image}
-                alt={activeModalProduct.name}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            </div>
+            {(() => {
+              const gallery = activeModalProduct.images ?? [activeModalProduct.image];
+              const current = gallery[imageIndex];
+  const isVideo = /\.(mp4|webm|ogg)$/i.test(current);
+              return (
+                <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', aspectRatio: '4 / 5', marginBottom: '20px' }}>
+                  {isVideo ? (
+                    <video
+                      src={current}
+                      controls
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                  ) : (
+                    <img
+                      src={current}
+                      alt={activeModalProduct.name}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                  )}
+                  {gallery.length > 1 && (
+                    <>
+                      <button
+                        className="gallery-arrow left"
+                        onClick={() => setImageIndex((imageIndex - 1 + gallery.length) % gallery.length)}
+                      >
+                        <ChevronLeft size={20} />
+                      </button>
+                      <button
+                        className="gallery-arrow right"
+                        onClick={() => setImageIndex((imageIndex + 1) % gallery.length)}
+                      >
+                        <ChevronRight size={20} />
+                      </button>
+                    </>
+                  )}
+                </div>
+              );
+            })()}
 
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
               <div>

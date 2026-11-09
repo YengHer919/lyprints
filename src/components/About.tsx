@@ -19,15 +19,15 @@ const About: React.FC = () => {
             <User size={28} />
           </div>
           <div>
-            <h3 style={{ fontFamily: 'Outfit', fontSize: '1.6rem', fontWeight: 700 }}>Yeng Her</h3>
+            <h3 style={{ fontFamily: 'Outfit', fontSize: '1.6rem', fontWeight: 700 }}>Y</h3>
             <p style={{ color: '#376f99', fontWeight: 700, fontSize: '0.95rem' }}>
-              Creator & Lead Engineer @ Forge3D
+              Creator & Lead Engineer
             </p>
           </div>
         </div>
 
         <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.7 }}>
-          Welcome to Forge3D! I’m a new 3D modeler sharing my work, experimenting with new ideas, and creating cool and unique things for others to enjoy.
+          Hello! I’m a new 3D modeler sharing my work, experimenting with new ideas, and creating cool and unique things for others to enjoy.
           I have experience creating models in TinkerCad and Blender and applying them practically in real life projects.
         </p>
       </div>
@@ -39,15 +39,15 @@ const About: React.FC = () => {
             <User size={28} />
           </div>
           <div>
-            <h3 style={{ fontFamily: 'Outfit', fontSize: '1.6rem', fontWeight: 700 }}>Lila Tern</h3>
+            <h3 style={{ fontFamily: 'Outfit', fontSize: '1.6rem', fontWeight: 700 }}>L</h3>
             <p style={{ color: '#376f99', fontWeight: 700, fontSize: '0.95rem' }}>
-              Co-Creator & Business Manager @ Forge3D
+              Co-Creator & Business Manager
             </p>
           </div>
         </div>
 
         <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.7 }}>
-          Welcome to Forge3D! I handle the business side of things—partnerships, operations, and making sure our ideas turn into reality.
+          I handle the business side of things—partnerships, operations, and making sure our ideas turn into reality.
           I'm passionate about helping bring great 3D work to the people who'll enjoy it most.
         </p>
       </div>

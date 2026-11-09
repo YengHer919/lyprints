@@ -17,7 +17,7 @@ const Home: React.FC<HomeProps> = ({ onNavigateToCatalog, onNavigateToContact })
         </h1>
 
         <p className="hero-subtitle">
-          Explore our collection of custom 3D models, mechanical art pieces, and handcrafted functional items.
+          Explore our collection of custom 3D models and mechanical art pieces. Also feel free to inquire about custom works tailored to your needs.
         </p>
 
         <div className="hero-cta-buttons">
@@ -87,20 +87,6 @@ const Home: React.FC<HomeProps> = ({ onNavigateToCatalog, onNavigateToContact })
           </div>
         </div>
       </section>
-
-      {/* Quick Call to Action Banner */}
-      <div className="about-card" style={{ textAlign: 'center' }}>
-        <h3 style={{ fontSize: '1.6rem', fontFamily: 'Outfit', fontWeight: 700, marginBottom: '12px' }}>
-          Ready to Explore the Gallery?
-        </h3>
-        <p style={{ color: 'var(--text-muted)', maxWidth: '550px', margin: '0 auto 24px' }}>
-          Check out our <strong>Product Gallery</strong> or contact us directly to request custom 3D model commissions.
-        </p>
-        <button className="btn-primary" onClick={onNavigateToCatalog}>
-          Open Product Gallery
-          <ArrowRight size={18} />
-        </button>
-      </div>
     </div>
   );
 };

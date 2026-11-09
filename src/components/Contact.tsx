@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, MapPin, Clock, Send, CheckCircle2, MessageSquare } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 interface ContactProps {
   initialSubject?: string;
@@ -11,11 +12,25 @@ const Contact: React.FC<ContactProps> = ({ initialSubject = '' }) => {
   const [subject, setSubject] = useState(initialSubject ? `Inquiry regarding: ${initialSubject}` : '');
   const [message, setMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !message) return;
     setIsSubmitted(true);
+     try {
+      await emailjs.send(
+        'service_58tz6de',
+        'template_psgrdu5',
+        { name, email, subject, message },
+        { publicKey: 'GyoPgKdk7MoiCIErw' }
+      );
+      setIsSubmitted(true);
+    } catch (err) {
+      alert('Failed to send. Please try again.');
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -58,6 +73,10 @@ const Contact: React.FC<ContactProps> = ({ initialSubject = '' }) => {
               >
                 Send Another Message
               </button>
+            </div>
+          ) : isSending ? (
+            <div style={{ padding: '24px', textAlign: 'center' }}>
+              <p style={{ color: 'var(--text-muted)' }}>Sending your inquiry...</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
